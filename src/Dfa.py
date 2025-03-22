@@ -1,20 +1,22 @@
-class FiniteStateMachine:
+class Dfa:
     def __init__(self):
         self.state = 1
-        self.valid = True
-
-    def input(self, input_string: str):
-        input_list = input_string.split()
+    def input(self, input_string: str, test):
+        self.state = 1
+        if input_string == '' or input_string == ' ':
+            return -1
+        input_list = list(input_string) 
+        
         for input in input_list:
-            print(f"Input is: {input}\nMachine is in state {1}")
+            if not test: print(f"Machine is in state 1\nInput is: {input}")
             output = self.action(input)
             if output == -1:
-                print("Input invalid, sequence rejected")
-                return None
-            print(f"Machine advances to state {output}")
+                if not test: print("Input invalid, sequence rejected")
+                return output
+            if not test: print(f"Machine advances to state {output}")
 
-        print("Input accepted")
-        return None
+        if not test: print("Input accepted")
+        return output
 
     def action(self, input):
         if self.state == 1:
@@ -36,8 +38,8 @@ class FiniteStateMachine:
 
         if self.state == 3:
             if input == "c":
-                self.state = 4
-                return 4
+                self.state = 5
+                return 5
             else:
                 return -1
 
@@ -46,15 +48,9 @@ class FiniteStateMachine:
                 return 4
             else:
                 return -1
-
-
-def main():
-    machine = FiniteStateMachine()
-    machine.input("abccc")
-    print("~~~~~~~~~")
-    machine.input("acc")
-    print("~~~~~~~~~")
-    machine.input("bccccc")
-
-
-main()
+        
+        if self.state == 5:
+            if input == "c":
+                return 5
+            else:
+                return -1
