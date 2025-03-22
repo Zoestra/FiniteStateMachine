@@ -39,6 +39,5 @@ class Nfa:
 
         
     def state_A(self, input_string, test):
-        print('input accepted')
         self.accepted = True
 
