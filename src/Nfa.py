@@ -9,6 +9,7 @@ class Nfa:
         return self.accepted
     
     def input(self, input_string, test):
+        self.accepted = False
         if len(input_string)== 0:
             return
         self.state_1(input_string, test) 
@@ -27,17 +28,21 @@ class Nfa:
     def state_2(self, input_string, test):
         if len(input_string)== 0:
             return
-        elif input_string[0] == 'a' or input_string[0] == 'b':
+        elif input_string[0] == 'b':
             self.state_3(input_string[1:], test)            
 
     def state_3(self, input_string, test):
         if len(input_string)== 0:
             return
-        elif input_string[0] == 'a' or input_string[0] == 'b':
+        elif input_string[0] == 'b':
             self.state_A(input_string[1:], test)            
 
 
         
     def state_A(self, input_string, test):
-        self.accepted = True
-
+        if len(input_string)== 0:
+            self.accepted = True
+            return
+        else:
+            self.accepted = False
+            return

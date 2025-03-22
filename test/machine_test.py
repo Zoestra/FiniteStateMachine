@@ -93,7 +93,7 @@ class MachineTest(unittest.TestCase):
     def test_nfa1(self):
         """NFA test - expected to pass"""
         nfa = Nfa.Nfa()
-        in_string = 'aabbb'
+        in_string = 'aabb'
         nfa.input(in_string, 1)
         result = nfa.get_result()
         self.assertEqual(result, True)
@@ -206,12 +206,23 @@ class MachineTest(unittest.TestCase):
         self.assertEqual(result, False)
         print(f'Nfa Test12 - \'{in_string}\' passed')
 
+    def test_nfa_13(self):
+        """NFA test - expected to fail"""
+        nfa = Nfa.Nfa()
+        in_string = 'abbb'
+        nfa.input(in_string, 1)
+        result = nfa.get_result()
+        self.assertEqual(result, False)
+        print(f'Nfa Test13 - \'{in_string}\' passed')
+
+
 
        
 
     def cli_test(self):
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         print('Running DFA Tests')
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         self.test_dfa1()
         self.test_dfa2()
         self.test_dfa3()
@@ -224,6 +235,7 @@ class MachineTest(unittest.TestCase):
         self.test_dfa_10()
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         print('Running NFA Tests')
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         self.test_nfa1()
         self.test_nfa2()
         self.test_nfa3()
@@ -236,7 +248,7 @@ class MachineTest(unittest.TestCase):
         self.test_nfa_10()
         self.test_nfa_11()
         self.test_nfa_12()
-        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        self.test_nfa_13()
         
         
         

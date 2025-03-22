@@ -38,21 +38,57 @@ def cli_run():
 
         elif user_input == 'dfa':
             dfa = Dfa.Dfa()
+            run_dfa = True
+            dfa_count = 0
+            print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
             print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
             print('~~~Deterministic Finite State Machine~~~~')
             print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-            print('~~~~~~~~~~Enter an input string~~~~~~~~~~')
-            dfa_input  = input('~')
-            if dfa_input == 'q': 
-                run = False
-                break
-            dfa.input(dfa_input, 0)
-            print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+            while run_dfa:
+                print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+                print('~~~~~~~~~~Enter an input string~~~~~~~~~~')
+                print('~~~~~~~~~~Or enter q to return~~~~~~~~~~~')
+                print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+                dfa_input  = input('~')
+                if dfa_input != 'q': 
+                    dfa.input(dfa_input, 0)
+                    dfa_count += 1
+
+                elif dfa_input == 'q':
+                    run_dfa = False
+                
+                if dfa_count > 5:
+
+                    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+                    print('~~~~~Accepted language is: (a+b)c*~~~~~~~')
 
         elif user_input == 'nfa':
+            run_nfa = True
+            nfa_count = 0
             print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-            print('NFA not implemented yet')
             print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+            print('~Non-Deterministic Finite State Machine~~')
+            print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+            while run_nfa:
+                print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+                print('~~~~~~~~~~Enter an input string~~~~~~~~~~')
+                print('~~~~~~~~~~Or enter q to return~~~~~~~~~~~')
+                print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+                nfa_input  = input('~')
+                nfa = Nfa.Nfa()
+                if nfa_input != 'q': 
+                    nfa.input(nfa_input, 0)
+                    if nfa.get_result() == True:
+                        print('String accepted!')
+                    else:
+                        print('String Rejected')
+                    nfa_count += 1
+                else:
+                    run_nfa = False
+                if nfa_count > 5:
+                    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+                    print('~~~Accepted language is: (a | b)*abb~~~~~')
+
 
         elif user_input == 'test':
             test = machine_test.MachineTest()
