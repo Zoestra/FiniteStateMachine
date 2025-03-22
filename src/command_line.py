@@ -1,8 +1,9 @@
+import sys
+sys.path.insert(0, '..')
 from data.zoe import *
 import Dfa 
 import Nfa
-import test
-from test import machine_test
+from src import machine_test
 
 def cli_run():
     """Runs the command line interface for this project"""
