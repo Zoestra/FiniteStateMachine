@@ -2,6 +2,7 @@ import unittest
 import sys
 sys.path.insert(0, '..')
 from src import Dfa
+from src import Nfa
 
 class MachineTest(unittest.TestCase):
     
@@ -89,7 +90,15 @@ class MachineTest(unittest.TestCase):
         self.assertEqual(result, 5)
         print(f'Test10 - \'{in_string}\' passed')
 
+    def test_nfa_1(self):
+        """nFA test - expected to pass"""
+        nfa = Nfa.Nfa()
+        in_string = 'aabb'
+        result = nfa.input(in_string, 1)
+        self.assertEqual(result, 5)
+        print(f'Nfa Test1 - \'{in_string}\' passed')
 
+       
 
     def cli_test(self):
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
