@@ -8,6 +8,7 @@ class MachineTest(unittest.TestCase):
 
 
     def test_dfa1(self):
+        """DFA test - expected to fail"""
         dfa = Dfa.Dfa()
         in_string = 'abccc'
         result = dfa.input(in_string, 1)
@@ -15,6 +16,7 @@ class MachineTest(unittest.TestCase):
         print(f'Test1 - \'{in_string}\' passed')
 
     def test_dfa2(self):
+        """DFA test - expected to pass in state 4"""
         dfa = Dfa.Dfa()
         in_string = 'acc'
         result = dfa.input(in_string, 1)
@@ -22,6 +24,7 @@ class MachineTest(unittest.TestCase):
         print(f'Test2 - \'{in_string}\' passed')
 
     def test_dfa3(self):
+        """DFA test - expected to pass in state 5"""
         dfa = Dfa.Dfa()
         in_string = 'bcccc'
         result = dfa.input(in_string, 1)
@@ -30,6 +33,7 @@ class MachineTest(unittest.TestCase):
 
 
     def test_dfa4(self):
+        """DFA test - expected to fail"""
         dfa = Dfa.Dfa()
         in_string = ''
         result = dfa.input(in_string, 1)
@@ -37,6 +41,7 @@ class MachineTest(unittest.TestCase):
         print(f'Test4 - \'{in_string}\' passed')
 
     def test_dfa5(self):
+        """DFA test - expected to fail"""
         dfa = Dfa.Dfa()
         in_string = 'ccccc'
         result = dfa.input(in_string, 1)
@@ -44,6 +49,7 @@ class MachineTest(unittest.TestCase):
         print(f'Test5 - \'{in_string}\' passed')
 
     def test_dfa6(self):
+        """DFA test - expected to pass in state 4"""
         dfa = Dfa.Dfa()
         in_string = 'acccccccccccccccccccccccccccccccc'
         result = dfa.input(in_string, 1)
@@ -51,11 +57,38 @@ class MachineTest(unittest.TestCase):
         print(f'Test6 - \'{in_string}\' passed')
 
     def test_dfa7(self):
+        """DFA test - expected to fail"""
         dfa = Dfa.Dfa()
         in_string = '  '
         result = dfa.input(in_string, 1)
         self.assertEqual(result, -1)
         print(f'Test7 - \'{in_string}\' passed')
+    
+    
+    def test_dfa8(self):
+        """DFA test - expected to pass in state 5"""
+        dfa = Dfa.Dfa()
+        in_string = 'bcccccccccccccccccccccccccccccccc'
+        result = dfa.input(in_string, 1)
+        self.assertEqual(result, 5)
+        print(f'Test8 - \'{in_string}\' passed')
+
+    def test_dfa9(self):
+        """DFA test - expected to pass in state 4"""
+        dfa = Dfa.Dfa()
+        in_string = 'ac'
+        result = dfa.input(in_string, 1)
+        self.assertEqual(result, 4)
+        print(f'Test9 - \'{in_string}\' passed')
+
+    def test_dfa_10(self):
+        """DFA test - expected to pass in state 5"""
+        dfa = Dfa.Dfa()
+        in_string = 'bc'
+        result = dfa.input(in_string, 1)
+        self.assertEqual(result, 5)
+        print(f'Test10 - \'{in_string}\' passed')
+
 
 
     def cli_test(self):
