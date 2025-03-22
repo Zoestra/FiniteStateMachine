@@ -90,6 +90,14 @@ class MachineTest(unittest.TestCase):
         self.assertEqual(result, 5)
         print(f'DFA Test10 - \'{in_string}\' passed')
 
+    def test_dfa_11(self):
+        """DFA test - expected to pass in state 3"""
+        dfa = Dfa.Dfa()
+        in_string = 'b'
+        result = dfa.input(in_string, 1)
+        self.assertEqual(result, 3)
+        print(f'DFA Test11 - \'{in_string}\' passed')
+
     def test_nfa1(self):
         """NFA test - expected to pass"""
         nfa = Nfa.Nfa()

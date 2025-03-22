@@ -11,3 +11,5 @@ Some examples of acceptable input are: aabb, babb, aaabb, bbabb, ababb, etc.
 
 Layout:
 ![data/FSM_Diagram.png](data/FSM_Diagram.png)
+
+Project can be ran either from src/main.py or from FiniteStateMachine.py

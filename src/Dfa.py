@@ -15,7 +15,12 @@ class Dfa:
                 return output
             if not test: print(f"Machine advances to state {output}")
 
-        if not test: print("Input accepted")
+        if not test: 
+            if output == 4 or output == 5:
+                print("Input accepted")
+            else:
+                print("Input invalid, sequence rejected")
+
         return output
 
     def action(self, input):
