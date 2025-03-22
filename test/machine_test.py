@@ -91,11 +91,12 @@ class MachineTest(unittest.TestCase):
         print(f'Test10 - \'{in_string}\' passed')
 
     def test_nfa_1(self):
-        """nFA test - expected to pass"""
+        """NFA test - expected to pass"""
         nfa = Nfa.Nfa()
         in_string = 'aabb'
-        result = nfa.input(in_string, 1)
-        self.assertEqual(result, 5)
+        nfa.input(in_string, 1)
+        result = nfa.get_result()
+        self.assertEqual(result, True)
         print(f'Nfa Test1 - \'{in_string}\' passed')
 
        
